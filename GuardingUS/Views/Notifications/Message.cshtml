@@ -1,0 +1,47 @@
+﻿@model IEnumerable<GuardingUS.Models.ViewModels.NotificationIndexVM>
+@{
+    ViewData["Title"] = "Message";
+}
+
+<h1>Your Message</h1>
+
+
+<table class="table">
+    <tbody>
+        @foreach(var notifications in Model)
+        {
+         <tr>
+             <td>
+                 <b>Date:</b>
+                 <br/>
+                 @notifications.CreationDate
+             </td>
+         </tr>
+         <tr>
+             <td>
+                 <b>Name:</b>
+                 <br/>
+                 @notifications.Name
+             </td>
+         </tr>
+         <tr>
+             <td>
+                 <b>Title</b>
+                 <br/>
+                 @notifications.Title
+             </td>
+         </tr>
+         <tr>
+             <td>
+                 <b>Message:</b>
+                 <br/>
+                @notifications.Message
+             </td>
+         </tr>
+             
+          
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-action="Index">Go Back</a>

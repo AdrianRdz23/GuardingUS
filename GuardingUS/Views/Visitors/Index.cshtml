@@ -1,0 +1,51 @@
+﻿@model IEnumerable<GuardingUS.Models.ViewModels.VisitorHomeVM>
+@{
+    ViewData["Title"] = "Visitors";
+}
+
+<h1>Visitors</h1>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Add new Visitor</a>
+
+<table class="table">
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Car Plate</th>
+        <th>Entrance</th>
+        <th>Exit</th>
+        <th>Identification</th>
+        <th>Home #</th>
+        <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var visitors in Model)
+        {
+         <tr>
+             <td>
+                 @visitors.Name
+             </td>
+             <td>
+                 @visitors.CarPlate
+             </td>
+             <td>
+                 @visitors.Entrance
+             </td>
+             <td>
+                 @visitors.Exit
+             </td>
+             <td>
+                 @visitors.Identification
+             </td>
+             <td>
+                 @visitors.Number
+             </td>
+             <td>
+                
+                 <a class="btn btn-primary" asp-controller="Visitors" asp-action="Update" asp-route-id="@visitors.Id">Update Exit</a>
+             </td>
+         </tr>   
+        }
+    </tbody>
+</table>

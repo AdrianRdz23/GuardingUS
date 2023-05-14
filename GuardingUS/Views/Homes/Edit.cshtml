@@ -1,0 +1,40 @@
+﻿@model GuardingUS.Models.ViewModels.AddHomeVM
+
+@{
+    ViewData["Title"] = "Edit Home";
+}
+
+<h1>Edit Home</h1>
+
+<form asp-action="Update">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="mb-3">
+            <label asp-for="Number" class="form-label"></label>
+            <input asp-for="Number" class="form-control" />
+            <span asp-validation-for="Number" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Cars" class="form-label"></label>
+            <input asp-for="Cars" class="form-control" />
+            <span asp-validation-for="Cars" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="IdAddress" class="form-label"></label>
+            <select asp-for="IdAddress" asp-items="Model.Address" class="form-select"></select>
+            <span asp-validation-for="IdAddress" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="IdUser" class="form-label"></label>
+            <select asp-for="IdUser" asp-items="Model.Owners" class="form-select"></select>
+            <span asp-validation-for="IdUser" class="text-danger"></span>
+        </div>
+
+        <button class="btn btn-primary">Update</button>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

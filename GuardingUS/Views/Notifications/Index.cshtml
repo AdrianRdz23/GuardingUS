@@ -1,0 +1,40 @@
+﻿@model IEnumerable<GuardingUS.Models.ViewModels.NotificationIndexVM>
+@{
+    ViewData["Title"] = "Notifcations";
+}
+
+<h1>Notifications</h1>
+
+<a asp-action="SendIndividual" class="btn btn-primary mb-3">Individual Message</a>
+
+<a asp-action="SendGroup" class="btn btn-primary mb-3">Group Message</a>
+
+<table class="table">
+    <thead>
+        <tr>
+        <th>Date</th>
+        <th>Sender</th>
+        <th>Message Title </th>
+        <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var notifications in Model)
+        {
+         <tr>
+             <td>
+                 @notifications.CreationDate
+             </td>
+             <td>
+                 @notifications.Name
+             </td>
+             <td>
+                 @notifications.Title
+             </td>
+             <td>
+                <a class="btn btn-primary" asp-action="Message" asp-route-id="@notifications.IdNotification">View</a>
+             </td>
+         </tr>   
+        }
+    </tbody>
+</table>

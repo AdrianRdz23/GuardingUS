@@ -1,0 +1,72 @@
+﻿@model GuardingUS.Models.ViewModels.VisitorCreationVM
+@{
+    ViewData["Title"] = "Add Visitor";
+}
+
+<h1>Add a Visitor</h1>
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CarPlate" class="form-label"></label>
+            <input asp-for="CarPlate" class="form-control" />
+            <span asp-validation-for="CarPlate" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Identification" class="form-label"></label>
+            <input asp-for="Identification" class="form-control" />
+            <span asp-validation-for="Identification" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="IdAddress" class="form-label"></label>
+            <select asp-for="IdAddress" asp-items="Model.Address" class="form-select"></select>
+            <span asp-validation-for="IdAddress" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="HomeId" class="form-label"></label>
+            <select asp-for="HomeId" asp-items="Model.Homes" class="form-select"></select>
+            <span asp-validation-for="HomeId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" ></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send</button>
+        <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+
+    
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+
+        const urlGetHomes = '@Url.Action("GetHomes2")';
+
+    $(function(){
+        $("#IdAddress").change(async function(){
+            const selectValue = $(this).val();
+
+            const answer = await fetch(urlGetHomes,{
+                method: 'POST',
+                body: selectValue,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const json = await answer.json();
+            
+            const options = json.map(address => `<option value=${address.value}>${address.text}</option>`);
+            $("#HomeId").html(options);
+        })
+    })
+    </script>
+}

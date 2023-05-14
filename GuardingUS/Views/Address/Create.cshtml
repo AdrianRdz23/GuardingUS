@@ -1,0 +1,24 @@
+﻿@model Address
+
+@{
+    ViewData["Title"] = "Create Address";
+}
+
+<h1>Create an address</h1>
+
+<form asp-action="Create">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <button class="btn btn-primary">Create Address</button>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

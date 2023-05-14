@@ -1,0 +1,43 @@
+﻿@model IEnumerable<GuardingUS.Models.ViewModels.HomeVM>
+@{
+    ViewData["Title"] = "Homes";
+}
+
+<h1>Homes</h1>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Create a Home</a>
+
+<table class="table">
+    <thead>
+        <tr>
+        <th>House #</th>
+        <th>Cars</th>
+        <th>Address</th>
+        <th>Owner</th>
+        <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var home in Model)
+        {
+         <tr>
+             <td>
+                 @home.Number
+             </td>
+             <td>
+                 @home.Cars
+             </td>
+             <td>
+                 @home.Address
+             </td>
+             <td>
+                 @home.Name
+             </td>
+             <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@home.Id">Edit</a>
+                <a class="btn btn-secondary" asp-action="Delete" asp-route-id="@home.Id">Delete</a>
+             </td>
+         </tr>   
+        }
+    </tbody>
+</table>

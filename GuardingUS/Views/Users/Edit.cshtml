@@ -1,0 +1,22 @@
+﻿@model GuardingUS.Models.ViewModels.EditUserVM;
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h1>Edit User</h1>
+
+<form asp-action="Update">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="IdRole" class="form-label"></label>
+            <select asp-for="IdRole" asp-items="Model.Roles" class="form-select"></select>
+            <span asp-validation-for="IdRole" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+
+    
+</form>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Address>
+@{
+    ViewData["Title"] = "Address";
+}
+
+<h1>Address</h1>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Create an Address</a>
+
+<table class="table">
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var address in Model)
+        {
+         <tr>
+             <td>
+                 @address.Name
+             </td>
+             <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@address.Id">Edit</a>
+                <a class="btn btn-secondary" asp-action="Delete" asp-route-id="@address.Id">Delete</a>
+             </td>
+         </tr>   
+        }
+    </tbody>
+</table>
