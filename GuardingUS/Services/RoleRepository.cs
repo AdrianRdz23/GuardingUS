@@ -21,7 +21,7 @@ namespace GuardingUS.Services
         {
             using var connection = new SqlConnection(connectionString);
 
-            return await connection.QueryAsync<Roles>(@"SELECT * FROM Roles;");
+            return await connection.QueryAsync<Roles>(@"SELECT * FROM AspNetRoles;");
         }
     }
 }

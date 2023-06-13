@@ -9,7 +9,7 @@ namespace GuardingUS.Services
     {
         Task Create(Homes homes);
         Task Delete(string id);
-        Task<IEnumerable<Homes>> Get(string address);
+        Task<IEnumerable<Homes>> Get(string idaddress);
         Task<IEnumerable<HomeVM>> Get();
         Task<Homes> GetById(string id);
         Task Update(AddHomeVM home);
@@ -58,7 +58,7 @@ namespace GuardingUS.Services
             using var connection = new SqlConnection(connectionString);
 
             await connection.ExecuteAsync(@"UPDATE Homes SET Number = @Number, Cars = @Cars, IdAddress = @IdAddress, IdUser = @IdUser, ModificationDate = GETDATE() WHERE Id = @Id", home);
-
+             
         }
 
         public async Task Delete(string id)

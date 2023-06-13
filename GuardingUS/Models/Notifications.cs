@@ -5,7 +5,7 @@ namespace GuardingUS.Models
     public class Notifications
     {
         [Key]
-        public string Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
         public string Title { get; set; }
 

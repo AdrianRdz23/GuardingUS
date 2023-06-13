@@ -1,14 +1,16 @@
-﻿@model IEnumerable<GuardingUS.Models.ViewModels.NotificationIndexVM>
+﻿@using GuardingUS.Services;
+@model IEnumerable<GuardingUS.Models.ViewModels.NotificationIndexVM>
 @{
     ViewData["Title"] = "Notifcations";
 }
 
 <h1>Notifications</h1>
 
+@(User.IsInRole(Constants.RoleAdmin) || User.IsInRole(Constants.RoleGuard)){
 <a asp-action="SendIndividual" class="btn btn-primary mb-3">Individual Message</a>
 
 <a asp-action="SendGroup" class="btn btn-primary mb-3">Group Message</a>
-
+}
 <table class="table">
     <thead>
         <tr>
@@ -26,7 +28,7 @@
                  @notifications.CreationDate
              </td>
              <td>
-                 @notifications.Name
+                 @notifications.UserName
              </td>
              <td>
                  @notifications.Title

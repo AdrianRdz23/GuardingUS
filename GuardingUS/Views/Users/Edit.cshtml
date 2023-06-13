@@ -10,9 +10,9 @@
         <input type="hidden" asp-for="Id" />
 
         <div class="mb-3">
-            <label asp-for="IdRole" class="form-label"></label>
-            <select asp-for="IdRole" asp-items="Model.Roles" class="form-select"></select>
-            <span asp-validation-for="IdRole" class="text-danger"></span>
+            <label asp-for="RoleId" class="form-label"></label>
+            <select asp-for="RoleId" asp-items="Model.Roles" class="form-select"></select>
+            <span asp-validation-for="RoleId" class="text-danger"></span>
         </div>
 
         <button type="submit" class="btn btn-primary">Update</button>

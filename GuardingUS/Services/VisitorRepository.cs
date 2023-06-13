@@ -23,7 +23,7 @@ namespace GuardingUS.Services
         public async Task Create(Visitors visitors)
         {
             using var connection = new SqlConnection(connectionString);
-            var id = await connection.QuerySingleAsync<string>(@"INSERT INTO Visitors(Id, [Name],CarPlate,IdAddress,Entrance,[Exit],Identification,HomeId,[Description]) VALUES (NEWID(),@Name,@CarPlate,@IdAddress,GETDATE(),cast(-53690 as datetime),@Identification,@HomeId,@Description); SELECT SCOPE_IDENTITY();", visitors);
+            var id = await connection.QuerySingleAsync<string>(@"INSERT INTO Visitors(Id,[Name],CarPlate,IdAddress,Entrance,[Exit],Identification,HomeId,[Description]) VALUES (NEWID(),@Name,@CarPlate,@IdAddress,GETDATE(),cast(-53690 as datetime),@Identification,@HomeId,@Description); SELECT SCOPE_IDENTITY();", visitors);
 
             visitors.Id = id;
 

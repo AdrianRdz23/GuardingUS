@@ -34,7 +34,9 @@ namespace GuardingUS.Controllers
         {
             var model = new VisitorCreationVM();
             model.Address = await GetAddress();
-            model.Homes = await GetHomes("F04B3A49-2B3E-49EC-AA20-2DFAEBC910D5");
+            model.Homes = await GetHomes("63CFA0E1-86AB-4BE7-B43A-ED8F31A456BB");
+            //model.Homes = await GetHomes(1);
+
 
             return View(model);
         }

@@ -1,9 +1,12 @@
 ﻿using GuardingUS.Models;
 using GuardingUS.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace GuardingUS.Controllers
 {
+    [Authorize(Roles = Constants.RoleAdmin)]
     public class AddressController : Controller
     {
         private readonly IAddressRepository addressRepository;

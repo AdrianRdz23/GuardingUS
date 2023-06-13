@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using GuardingUS.Services;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -22,13 +23,13 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        @(User.IsInRole(Constants.RoleAdmin)){
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Visitors" asp-action="Index">Visitors</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
-                        </li>
-                        
+                        </li> 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Address" asp-action="Index">Address</a>
                         </li>
@@ -38,6 +39,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Notifications" asp-action="Index">Notifications</a>
                         </li>
+                        }
+                        @(User.IsInRole(Constants.RoleGuard)){
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Visitors" asp-action="Index">Visitors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Notifications" asp-action="Index">Notifications</a>
+                        </li>
+                        }
+                        @(User.IsInRole(Constants.RoleResident)){
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Notifications" asp-action="Index">Notifications</a>
+                        </li>
+                        }
                     </ul>
                     <partial name="_LinksLogin" />  
                 </div>
@@ -57,8 +72,8 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/lib/jquery-ui/jquery-ui.min.js" ></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+@*    <script src="~/lib/jquery-ui/jquery-ui.min.js" ></script>
+*@    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

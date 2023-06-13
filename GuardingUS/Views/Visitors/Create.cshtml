@@ -54,15 +54,18 @@
         $("#IdAddress").change(async function(){
             const selectValue = $(this).val();
 
+            const data = JSON.stringify(selectValue); // retreive string value (Change)
+
             const answer = await fetch(urlGetHomes,{
                 method: 'POST',
-                body: selectValue,
+                body: data, //string value (change)
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
 
             const json = await answer.json();
+            //console.log(json);
             
             const options = json.map(address => `<option value=${address.value}>${address.text}</option>`);
             $("#HomeId").html(options);

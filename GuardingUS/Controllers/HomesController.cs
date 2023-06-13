@@ -1,12 +1,16 @@
 ﻿using AutoMapper;
+using GuardingUS.Models;
 using GuardingUS.Models.ViewModels;
 using GuardingUS.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Data;
 using System.Security.Claims;
 
 namespace GuardingUS.Controllers
 {
+    [Authorize(Roles = Constants.RoleAdmin)]
     public class HomesController : Controller
     {
         private readonly IHomeRepository homeRepository;
@@ -93,7 +97,7 @@ namespace GuardingUS.Controllers
         {
             var accountsTypes = await addressRepository.Get();
 
-            return accountsTypes.Select(x => new SelectListItem(x.Name, x.Id.ToString()));
+            return accountsTypes.Select(x => new SelectListItem(x.Name, x.Id));
 
         }
 
@@ -104,8 +108,8 @@ namespace GuardingUS.Controllers
             //var userId = userService.GetUserId();
             var users = await userRepository.Get(userId);
 
-            return users.Select(x => new SelectListItem(x.UserName, x.Id.ToString()));
-
+            //return users.Select(x => new SelectListItem(x.UserName, x.Id.ToString()));
+            return users.Select(x => new SelectListItem(x.UserName, x.Id));
         }
 
 

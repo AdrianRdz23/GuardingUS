@@ -9,7 +9,10 @@
         public string PhoneNumber { get; set; }
         public string NormalizedEmail { get; set; }
         public string PasswordHash { get; set; }
-        public string IdRole { get; set; }
+        public string RoleId { get; set; }
+
+        //Temporal
+        public string UserId { get; set; }
 
     }
 }
