@@ -23,7 +23,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        @(User.IsInRole(Constants.RoleAdmin)){
+                        @if (User.IsInRole(Constants.RoleAdmin)){
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Visitors" asp-action="Index">Visitors</a>
                         </li>
@@ -40,7 +40,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Notifications" asp-action="Index">Notifications</a>
                         </li>
                         }
-                        @(User.IsInRole(Constants.RoleGuard)){
+                        @if (User.IsInRole(Constants.RoleGuard)){
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Visitors" asp-action="Index">Visitors</a>
                         </li>
@@ -48,7 +48,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Notifications" asp-action="Index">Notifications</a>
                         </li>
                         }
-                        @(User.IsInRole(Constants.RoleResident)){
+                        @if (User.IsInRole(Constants.RoleResident)){
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Notifications" asp-action="Index">Notifications</a>
                         </li>
